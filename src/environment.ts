@@ -37,9 +37,15 @@ const fetchQuery: FetchFunction = async (params, variables, _cacheConfig) => {
   return json;
 };
 
+function getDataID(data: any, typename: string) {
+  return btoa(`${typename}:${String(data.id)}`);
+}
+
 export default new Environment({
   network: Network.create(fetchQuery),
   store: new Store(new RecordSource(), {
     gcReleaseBufferSize: 10
-  })
+  }),
+  // @ts-ignore
+  UNSTABLE_DO_NOT_USE_getDataID: getDataID
 });

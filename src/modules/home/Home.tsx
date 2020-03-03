@@ -5,7 +5,7 @@ import graphql from "babel-plugin-relay/macro";
 import { HomeQuery } from "./__generated__/HomeQuery.graphql";
 
 function Home() {
-  const query = useLazyLoadQuery<HomeQuery>(
+  const { profile } = useLazyLoadQuery<HomeQuery>(
     graphql`
       query HomeQuery {
         profile {
@@ -17,9 +17,17 @@ function Home() {
     {}
   );
 
-  console.log(query);
-
-  return <div>hasura-relay-example</div>;
+  return (
+    <div>
+      {profile.map(({ id, name }) => (
+        <div key={id}>
+          <p>id: {id}</p>
+          <p>name: {name}</p>
+          <br />
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default Home;
