@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "react-relay": "^9.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -14,14 +15,17 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "graphqurl": "^0.3.3",
     "react-scripts": "3.4.0",
+    "relay-config": "^9.0.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "update-schema": "gq https://hasura-relay-example.herokuapp.com/v1/graphql --introspect > schema.graphql"
   },
   "eslintConfig": {
     "extends": "react-app"
