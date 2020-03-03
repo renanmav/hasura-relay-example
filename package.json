@@ -15,9 +15,15 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-relay": "^7.0.3",
+    "@types/relay-runtime": "^8.0.6",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-relay": "^9.0.0",
     "graphqurl": "^0.3.3",
     "react-scripts": "3.4.0",
+    "relay-compiler": "^9.0.0",
     "relay-config": "^9.0.0",
+    "relay-runtime": "^9.0.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -25,10 +31,19 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "update-schema": "gq https://hasura-relay-example.herokuapp.com/v1/graphql --introspect > schema.graphql"
+    "update-schema": "gq https://hasura-relay-example.herokuapp.com/v1/graphql --introspect > data/schema.graphql",
+    "relay": "relay-compiler"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "relay"
+    ]
   },
   "browserslist": {
     "production": [
